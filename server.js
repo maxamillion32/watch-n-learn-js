@@ -23,22 +23,6 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 });
 
-// Only load this middleware in dev mode (important)
-if (app.get('env') === 'development') {
-  var webpackMiddleware = require('webpack-dev-middleware');
-  var webpack = require('webpack');
-
-  var config = require('./webpack.config');
-
-
-  // TODO not working for some reason to fix
-  app.use(webpackMiddleware(webpack(config), {
-    stats: {
-      colors: true
-    }
-  }));
-}
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
