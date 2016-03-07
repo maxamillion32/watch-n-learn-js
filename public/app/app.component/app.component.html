@@ -1,0 +1,10 @@
+<nav class="navbar navbar-full navbar-dark bg-inverse">
+  <div class="container">
+    <a class="navbar-brand" href="#">Watch n Learn</a>
+    <div class="nav navbar-nav pull-left">
+        <a class="nav-item nav-link" [routerLink]="['Auth', {type: 'login'}]">Login</a>
+        <a class="nav-item nav-link" [routerLink]="['Auth', {type: 'register'}]">Register</a>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
