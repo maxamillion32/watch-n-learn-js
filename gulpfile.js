@@ -39,3 +39,6 @@ gulp.task('css', function() {
         .src(cssSources)
         .pipe(gulp.dest(outputDir + '/css'));
 });
+
+
+gulp.task('default', ['js', 'css']);
