@@ -3,11 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "posinstall": "concurrently \"typings install\" \"gulp\"  \"tsc\" "
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.8",

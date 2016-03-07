@@ -1,1 +1,1 @@
-Web: npm start
+Web: typings install && tsc && gulp && npm start
