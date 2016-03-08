@@ -20,7 +20,9 @@ var jsSources = [
   'node_modules/angular2/bundles/angular2.dev.js',
   'node_modules/angular2/bundles/angular2.dev.map',
   'node_modules/angular2/bundles/router.dev.js',
-  'node_modules/angular2/bundles/router.dev.map'
+  'node_modules/angular2/bundles/router.dev.map',
+  'node_modules/angular2/bundles/http.dev.js',
+  'node_modules/angular2/bundles/http.dev.map'
 ];
 
 var cssSources = [
