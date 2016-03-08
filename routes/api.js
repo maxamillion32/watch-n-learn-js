@@ -22,6 +22,19 @@ router.get('/users', function (req, res) {
     });
 });
 
+router.get('/users/:id', function (req, res) {
+   db('users')
+    .where('id', req.params.id)
+    .then(function(user) {
+        res.status(200)
+            .json(user);
+    })
+    .catch(function(error) {
+        res.status(500)
+            .send(error);
+    })
+});
+
 router.post('/users', function(req, res) {
    var user = req.body;
    db
