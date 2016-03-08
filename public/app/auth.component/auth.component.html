@@ -18,27 +18,27 @@
         </div>
         <div *ngIf="!login">
             <h1>Register</h1>
-            <form>
+            <form (submit)="registerUser()">
                 <fieldset class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    <input type="text" [(ngModel)]="user.name" class="form-control" id="name" placeholder="Enter name">
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    <input type="text" [(ngModel)]="user.username" class="form-control" id="username" placeholder="Enter username">
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    <input type="email" [(ngModel)]="user.email" class="form-control" id="email" placeholder="Enter email">
                     <small class="text-muted">We'll never share your email with anyone else.</small>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                    <input type="password" [(ngModel)]="user.password" class="form-control" id="password" placeholder="Enter Password">
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
-                    <input type="password" class="form-control" id="password_confirmation" placeholder="Confirm Password">
+                    <input type="password" [(ngModel)]="user.password_confirmation" class="form-control" id="password_confirmation" placeholder="Confirm Password">
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Register</button>
                 <a [routerLink]="['Auth', {type: 'login'}]">Already have an account? Login</a>
