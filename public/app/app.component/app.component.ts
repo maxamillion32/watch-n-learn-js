@@ -1,7 +1,10 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
-import {AuthComponent} from '../auth.component/auth.component'
+import {AuthComponent} from '../auth.component/auth.component';
+
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +13,9 @@ import {AuthComponent} from '../auth.component/auth.component'
       ROUTER_DIRECTIVES
      ],
   providers: [
-      ROUTER_PROVIDERS
+      AuthService,
+      ROUTER_PROVIDERS,
+      HTTP_PROVIDERS
      ]
 })
 
