@@ -8,6 +8,4 @@ export class User {
     public bio: string;
     public provider: string;
     public uid: string;
-    public created_at: string;
-    public updated_at: string;
 }
