@@ -37,6 +37,7 @@ router.get('/users/:id', function (req, res) {
 
 router.post('/users', function(req, res) {
    var user = req.body;
+   console.log(user);
    db
     .insert(user)
     .into('users')
@@ -44,6 +45,7 @@ router.post('/users', function(req, res) {
        res
         .status(201)
         .json({
+            success: true,
             message: 'User successfully created'
         });
    })
