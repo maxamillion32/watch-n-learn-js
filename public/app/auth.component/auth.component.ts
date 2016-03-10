@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core'
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router'
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router'
 
 import {AuthService} from '../services/auth.service';
 
@@ -21,16 +21,24 @@ export class AuthComponent implements OnInit {
     
     constructor(
         private _routeParams: RouteParams,
-        private _authService: AuthService
+        private _authService: AuthService,
+        private _router: Router
     ) {}
     
     ngOnInit() {
         let type = this._routeParams.get('type');
         this.login = type == 'login';
-        this._authService.getUsers()
-                            .subscribe(
-                                users => console.log('success', users),
-                                error => console.log('error', error)
-                            )
+    }
+    
+    registerUser() {
+        this._authService.addUser(this.user)
+                        .subscribe(
+                            (res) => {
+                                if (res.success) {
+                                   this._router.navigate(['Auth', {type: 'login'}]);
+                                }
+                            },
+                            (error) => { console.log(error)}  
+                        )
     }
 }
