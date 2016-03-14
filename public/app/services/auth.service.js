@@ -27,12 +27,45 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             AuthService = (function () {
                 function AuthService(_http) {
                     this._http = _http;
-                    this._baseUrl = '/api/users/';
                 }
+                AuthService.prototype.AuthUser = function () {
+                    if (localStorage.getItem('wnljwt')) {
+                        return localStorage.getItem('wnluser');
+                    }
+                    else {
+                        return false;
+                    }
+                };
+                AuthService.prototype.addUser = function (user) {
+                    var body = JSON.stringify(user);
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    return this._http
+                        .post('/api/users', body, options)
+                        .map(function (res) { return res.json(); })
+                        .do(function (res) { return console.log(res); })
+                        .catch(this.handleError);
+                };
                 AuthService.prototype.getUsers = function () {
                     return this._http
-                        .get(this._baseUrl)
+                        .get('/api/users/')
                         .map(function (res) { return res.json(); })
+                        .do(function (res) { return console.log(res); }) //comment out in production
+                        .catch(this.handleError);
+                };
+                AuthService.prototype.login = function (email, password) {
+                    var body = JSON.stringify({ email: email, password: password });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    return this._http
+                        .post('/api/auth', body, options)
+                        .map(function (res) {
+                        if (res.json().token) {
+                            localStorage.setItem('wnljwt', res.json().token);
+                        }
+                        return res.json();
+                    })
+                        .do(function (res) { return console.log(res); }) //comment out in production
                         .catch(this.handleError);
                 };
                 AuthService.prototype.handleError = function (error) {

@@ -1,5 +1,6 @@
-import {Component, OnInit} from 'angular2/core'
-import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router'
+import {Component, OnInit} from 'angular2/core';
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {NgForm} from 'angular2/common';
 
 import {AuthService} from '../services/auth.service';
 
@@ -17,6 +18,7 @@ import {User} from '../models/user';
 export class AuthComponent implements OnInit {
     
     login: boolean;
+    error: string;
     user: User = new User();
     
     constructor(
@@ -28,6 +30,23 @@ export class AuthComponent implements OnInit {
     ngOnInit() {
         let type = this._routeParams.get('type');
         this.login = type == 'login';
+    }
+    
+    loginUser(email: string, password: string) {
+        this._authService.login(email, password)
+                        .subscribe(
+                            res => {
+                                if (res.success) {
+                                    this._router.navigate(['Dashboard'])
+                                } else {
+                                    this.error = res.message;
+                                    console.log(this.error);
+                                }
+                            },
+                            err => {
+                                console.log(err);
+                            }
+                        );
     }
     
     registerUser() {
