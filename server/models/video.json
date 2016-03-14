@@ -25,6 +25,10 @@
     "userId": {
       "type": "number",
       "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
     }
   },
   "validations": [],

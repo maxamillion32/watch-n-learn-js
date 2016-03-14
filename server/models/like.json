@@ -14,7 +14,7 @@
       "type": "number",
       "required": true
     },
-    "created_at": {
+    "createdAt": {
       "type": "date",
       "required": true
     }
