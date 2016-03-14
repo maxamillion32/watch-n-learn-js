@@ -35,5 +35,9 @@
   "video": {
     "dataSource": "db",
     "public": true
+  },
+  "comment": {
+    "dataSource": "db",
+    "public": true
   }
 }
