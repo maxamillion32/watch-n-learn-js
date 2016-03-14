@@ -7,6 +7,27 @@ var jwt = require('jsonwebtoken');
 
 // Authenticate API users
 
+router.post('/users', function(req, res) {
+   var user = req.body;
+   console.log(user);
+   db
+    .insert(user)
+    .into('users')
+    .then(function(result) {
+       res
+        .status(201)
+        .json({
+            success: true,
+            message: 'User successfully created'
+        });
+   })
+   .catch(function(error) {
+       res
+        .status(400)
+        .json(error);
+   });
+});
+
 router.post('/auth', function(req, res) {
     // find the user
     db('users')
@@ -28,7 +49,7 @@ router.post('/auth', function(req, res) {
                         .json({
                             success: true,
                             message: 'Authenticated Successfuly',
-                            toke: token
+                            token: token
                         });
                 }
                 
@@ -38,7 +59,7 @@ router.post('/auth', function(req, res) {
             res.status(500)
                 .send(error);
         });
-})
+});
 
 router.use(function(req, res, next) {
     // check header or url parameters or post parameters for token
@@ -93,27 +114,6 @@ router.get('/users/:id', function (req, res) {
         res.status(500)
             .send(error);
     })
-});
-
-router.post('/users', function(req, res) {
-   var user = req.body;
-   console.log(user);
-   db
-    .insert(user)
-    .into('users')
-    .then(function(result) {
-       res
-        .status(201)
-        .json({
-            success: true,
-            message: 'User successfully created'
-        });
-   })
-   .catch(function(error) {
-       res
-        .status(400)
-        .json(error);
-   });
 });
 
 module.exports = router

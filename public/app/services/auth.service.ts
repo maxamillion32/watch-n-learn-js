@@ -6,9 +6,16 @@ import {User} from '../models/user';
 
 @Injectable()
 export class AuthService {
-    private _baseUrl = '/api/users/';
     
     constructor(private _http: Http){}
+    
+    AuthUser() {
+        if (localStorage.getItem('wnljwt')) {
+            return localStorage.getItem('wnluser');
+        } else {
+            return false;
+        }
+    }
     
     addUser(user: User) {
         let body = JSON.stringify(user);
@@ -16,7 +23,7 @@ export class AuthService {
         let options = new RequestOptions({headers: headers});
         
         return this._http
-            .post(this._baseUrl, body, options)
+            .post('/api/users', body, options)
             .map(res => res.json())
             .do(res => console.log(res))
             .catch(this.handleError);                    
@@ -24,10 +31,27 @@ export class AuthService {
     
     getUsers() {
         return this._http
-            .get(this._baseUrl)
+            .get('/api/users/')
             .map(res => <User[]> res.json())
             .do(res => console.log(res)) //comment out in production
             .catch(this.handleError);                          
+    }
+    
+    login(email: string, password: string) {
+        let body = JSON.stringify({email, password});
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+        
+        return this._http
+                .post('/api/auth', body, options)
+                .map(res => {
+                    if (res.json().token) {
+                        localStorage.setItem('wnljwt', res.json().token);
+                    }
+                    return res.json();
+                })
+                .do(res => console.log(res)) //comment out in production
+                .catch(this.handleError);
     }
     
     private handleError(error: Response) {
