@@ -36,7 +36,7 @@ var cssSources = [
 
 gulp.task('angular', function() {
     return gulp
-        .src(jsSources, {base: 'node_modules'})
+        .src(angularSources, {base: 'node_modules'})
         .pipe(gulp.dest(outputDir + 'js'));
 });
 
