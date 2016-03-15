@@ -18,4 +18,5 @@
 coverage
 node_modules
 typings
+client/js/
 npm-debug.log
