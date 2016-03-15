@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"node .\" ",
+    "start": "concurrently \"npm run tsc\" \"node .\" ",
+    "dev": "concurrently \"npm run tsc:w\" \"node .\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "pretest": "jshint .",
     "posttest": "nsp check",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "gulp"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.9",
