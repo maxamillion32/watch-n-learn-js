@@ -32,15 +32,19 @@
     "dataSource": "db",
     "public": false
   },
-  "Video": {
+  "video": {
     "dataSource": "db",
     "public": true
   },
-  "Comment": {
+  "comment": {
     "dataSource": "db",
     "public": true
   },
-  "Like": {
+  "like": {
+    "dataSource": "db",
+    "public": true
+  },
+  "user": {
     "dataSource": "db",
     "public": true
   }
