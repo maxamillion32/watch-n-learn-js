@@ -1,5 +1,5 @@
 {
-  "name": "like",
+  "name": "Like",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,7 +10,7 @@
       "type": "number",
       "required": true
     },
-    "projectId": {
+    "videoId": {
       "type": "number",
       "required": true
     },

@@ -1,5 +1,5 @@
 {
-  "name": "video",
+  "name": "Video",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -32,7 +32,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
