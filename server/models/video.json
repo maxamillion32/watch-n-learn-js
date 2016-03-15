@@ -37,6 +37,11 @@
       "type": "hasMany",
       "model": "Comment",
       "foreignKey": ""
+    },
+    "likes": {
+      "type": "hasMany",
+      "model": "Like",
+      "foreignKey": ""
     }
   },
   "acls": [],
