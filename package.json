@@ -3,11 +3,22 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "node .",
+    "start": "concurrently \"npm run tsc:w\" \"node .\" ",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
     "pretest": "jshint .",
-    "posttest": "nsp check"
+    "posttest": "nsp check",
+    "typings": "typings",
+    "postinstall": "typings install"
   },
   "dependencies": {
+    "angular2": "2.0.0-beta.9",
+    "systemjs": "0.19.24",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.5.15",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "helmet": "^1.3.0",
@@ -19,7 +30,10 @@
   },
   "devDependencies": {
     "jshint": "^2.5.6",
-    "nsp": "^2.1.0"
+    "nsp": "^2.1.0",
+    "concurrently": "^2.0.0",
+    "typescript": "^1.8.7",
+    "typings":"^0.7.5"
   },
   "repository": {
     "type": "",
