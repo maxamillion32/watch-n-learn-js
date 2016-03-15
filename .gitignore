@@ -19,7 +19,6 @@ coverage
 node_modules
 typings
 client/js/
-client/css/
 semantic/src/
 semantic/tasks/
 semantic/dist/components/
