@@ -37,7 +37,13 @@
       System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
-    <script>
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <app></app>
+      
+      <script>
         $(document)
             .ready(function() {
 
@@ -57,12 +63,11 @@
             // create sidebar and attach to menu open
             $('.ui.sidebar')
                 .sidebar('attach events', '.toc.item');
+            
+            $('.sign-up').click(function(){
+                console.log('Hello');
             });
+           });
     </script>
-  </head>
-
-  <!-- 3. Display the application -->
-  <body>
-      <app></app>
   </body>
 </html>

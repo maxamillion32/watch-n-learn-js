@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "concurrently \"npm run tsc\" \"node .\" ",
-    "dev": "concurrently \"npm run tsc:w\" \"node .\" ",
+    "start": "concurrently \"npm run tsc:w\" \"node .\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "pretest": "jshint .",
