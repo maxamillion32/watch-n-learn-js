@@ -31,7 +31,6 @@ var jsSources = [
 
 var cssSources = [
   'semantic/dist/semantic.min.css',
-  'semantic/dist/themes/default/*'
 ]
 
 gulp.task('angular', function() {
@@ -50,7 +49,7 @@ gulp.task('js', function() {
 gulp.task('css', function() {
   return gulp
         .src(cssSources)
-        .pipe(gulp.dest(outputDir + '/css'));
+        .pipe(gulp.dest(outputDir + 'css'));
 });
 
 
