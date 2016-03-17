@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../auth/register/register.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', '../home/home.component', '../auth/register/register.component', '../auth/login/login.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,27 @@ System.register(['angular2/core', '../auth/register/register.component'], functi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, register_component_1;
+    var core_1, router_1, http_1, home_component_1, register_component_1, login_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (home_component_1_1) {
+                home_component_1 = home_component_1_1;
+            },
             function (register_component_1_1) {
                 register_component_1 = register_component_1_1;
+            },
+            function (login_component_1_1) {
+                login_component_1 = login_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -28,10 +40,33 @@ System.register(['angular2/core', '../auth/register/register.component'], functi
                     core_1.Component({
                         selector: 'app',
                         templateUrl: './app/app.component/app.component.html',
+                        styleUrls: ['./app/app.component/app.component.css'],
                         directives: [
-                            register_component_1.RegisterComponent
+                            router_1.ROUTER_DIRECTIVES
+                        ],
+                        providers: [
+                            router_1.ROUTER_PROVIDERS,
+                            http_1.HTTP_PROVIDERS
                         ]
-                    }), 
+                    }),
+                    router_1.RouteConfig([
+                        {
+                            path: '/',
+                            name: 'Home',
+                            useAsDefault: true,
+                            component: home_component_1.HomeComponent
+                        },
+                        {
+                            path: '/register',
+                            name: 'Register',
+                            component: register_component_1.RegisterComponent
+                        },
+                        {
+                            path: '/login',
+                            name: 'Login',
+                            component: login_component_1.LoginComponent
+                        },
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
