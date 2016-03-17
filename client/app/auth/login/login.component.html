@@ -1,5 +1,5 @@
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
+<div class="ui middle aligned center aligned grid" [style.height.vh]="100">
+  <div class="column" [style.max-width.px]="450">
     <h2 class="ui teal header">
       <div class="content">
         Log-in to your account
@@ -27,7 +27,7 @@
     </form>
 
     <div class="ui message">
-      New to us? <a href="#">Sign Up</a>
+      New to us? <a [routerLink]="['Register']">Create Account</a>
     </div>
   </div>
 </div>
