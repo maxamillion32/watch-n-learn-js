@@ -23,7 +23,17 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
         execute: function() {
             RegisterComponent = (function () {
                 function RegisterComponent() {
+                    this.user = {
+                        name: 'Ganga Christopher',
+                        username: 'gangachris',
+                        email: 'ganga.chris@gmail.com',
+                        password: 'dayocode',
+                        password_confirmation: 'dayocode',
+                    };
                 }
+                RegisterComponent.prototype.register = function () {
+                    console.log(this.user);
+                };
                 RegisterComponent = __decorate([
                     core_1.Component({
                         selector: 'register',

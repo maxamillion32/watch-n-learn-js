@@ -5,47 +5,48 @@
                 Create your account
             </div>
         </h2>
-        <form class="ui large form">
+        <form class="ui large form" (submit)="register()">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="name" placeholder="Full Name">
+                        <input type="text" [(ngModel)]="user.name" name="name" placeholder="Full Name">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" [(ngModel)]="user.username" name="username" placeholder="Username">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
+                        <input type="email" [(ngModel)]="user.email" name="email" placeholder="E-mail address">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password_confirmation" placeholder="Confirm Password">
+                        <input type="password" [(ngModel)]="user.password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                     </div>
                 </div>
-                <div class="ui fluid large teal submit button">Create Account</div>
+                <button type="submit" class="ui fluid large teal submit button">Create Account</button>
+                <p class="ui error message">
+                     Already have an account? <a [routerLink]="['Login']">Sign In</a>
+                </p>
             </div>
 
-            <div class="ui error message"></div>
+            <div class="ui error message">Error</div>
 
         </form>
 
-        <div class="ui message">
-            Already have an account? <a [routerLink]="['Login']">Sign In</a>
-        </div>
+        
     </div>
 </div>

@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core'
+import {NgForm} from 'angular2/common'
 import {ROUTER_DIRECTIVES} from 'angular2/router'
 
 @Component({
@@ -10,4 +11,16 @@ import {ROUTER_DIRECTIVES} from 'angular2/router'
     ]
 })
 
-export class RegisterComponent {}
+export class RegisterComponent {
+    user = {
+        name: 'Ganga Christopher',
+        username: 'gangachris',
+        email: 'ganga.chris@gmail.com',
+        password: 'dayocode',
+        password_confirmation: 'dayocode',
+    }
+    
+    register() {
+        console.log(this.user);
+    }
+}
