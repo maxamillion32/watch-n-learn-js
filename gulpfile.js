@@ -1,10 +1,9 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var sourcemaps = require('gulp-sourcemaps');
 
-var outputDir = 'public/';
+var outputDir = 'client/';
 
-var jsSources = [
+var angularSources = [
   'node_modules/es6-shim/es6-shim.min.js',
   'node_modules/es6-shim/es6-shim.map',
   'node_modules/systemjs/dist/system-polyfills.js',
@@ -22,17 +21,29 @@ var jsSources = [
   'node_modules/angular2/bundles/router.dev.js',
   'node_modules/angular2/bundles/router.dev.map',
   'node_modules/angular2/bundles/http.dev.js',
-  'node_modules/angular2/bundles/http.dev.map'
+  'node_modules/angular2/bundles/http.dev.map',
 ];
 
-var cssSources = [
-  'node_modules/bootstrap/dist/css/bootstrap.css',
-  'node_modules/bootstrap/dist/css/bootstrap.css.map'
+var jsSources = [
+    'node_modules/jquery/dist/jquery.min.js',
+    'semantic/dist/semantic.min.js'
 ]
+
+var cssSources = [
+  'semantic/dist/semantic.min.css',
+  'semantic/dist/themes/default/*'
+]
+
+gulp.task('angular', function() {
+    return gulp
+        .src(angularSources, {base: 'node_modules'})
+        .pipe(gulp.dest(outputDir + 'js'));
+});
 
 gulp.task('js', function() {
     return gulp
-        .src(jsSources, {base: 'node_modules'})
+        .src(jsSources)
+        .pipe(concat('scripts.js'))
         .pipe(gulp.dest(outputDir + 'js'));
 });
 
@@ -43,4 +54,4 @@ gulp.task('css', function() {
 });
 
 
-gulp.task('default', ['js', 'css']);
+gulp.task('default', ['angular','js', 'css']);
