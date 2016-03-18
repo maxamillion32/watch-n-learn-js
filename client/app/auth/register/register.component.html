@@ -7,31 +7,31 @@
         </h2>
         <form [ngFormModel]="form" class="ui large form" (submit)="register()">
             <div class="ui stacked segment">
-                <div class="field">
+                <div class="field" *ngIf="true" [class.error]="!name.valid && !name.pristine">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
                         <input type="text" ngControl="name" placeholder="Full Name">
                     </div>
                 </div>
-                <div class="field">
+                <div class="field" *ngIf="true" [class.error]="!username.valid && !username.pristine">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
                         <input type="text" ngControl="username" placeholder="Username">
                     </div>
                 </div>
-                <div class="field">
+                <div class="field" *ngIf="true" [class.error]="!email.valid && !email.pristine">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
                         <input type="email" ngControl="email" placeholder="E-mail address">
                     </div>
                 </div>
-                <div class="field">
+                <div class="field" *ngIf="true" [class.error]="!password.valid && !password.prisitine">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
                         <input type="password" ngControl="password" placeholder="Password">
                     </div>
                 </div>
-                <div class="field">
+                <div class="field" *ngIf="true" [class.error]="!confirm.valid && !confirm.prisitine">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
                         <input type="password" ngControl="confirm" placeholder="Confirm Password">
