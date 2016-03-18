@@ -2,6 +2,8 @@ import {Component} from 'angular2/core'
 import { FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES } from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router'
 
+import {AuthService} from '../auth.service'
+
 
 import {emailValidator} from '../../helpers';
 
@@ -25,12 +27,12 @@ export class RegisterComponent {
     
     form: ControlGroup;
     
-    constructor(private builder: FormBuilder) {
+    constructor(private builder: FormBuilder, private authService: AuthService) {
         this.name = new Control('', Validators.required);
         this.username = new Control('', Validators.compose([Validators.required, Validators.minLength(2)]));
         this.email = new Control('', Validators.compose([Validators.required, emailValidator]));
         this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
-        this.confirm = new Control('', Validators.required);
+        this.confirm = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
         
         this.form = builder.group({
             name: this.name,
@@ -42,6 +44,10 @@ export class RegisterComponent {
     }
     
     register() {
-        console.log(this.form);
+        this.authService.createUser(this.form.value)
+                        .subscribe(
+                            (res) => {console.log('Success', res)},
+                            (err) => console.log('Error', err)
+                        );
     }
 }

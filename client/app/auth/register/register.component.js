@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', '../../helpers'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', '../auth.service', '../../helpers'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../../h
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, helpers_1;
+    var core_1, common_1, router_1, auth_service_1, helpers_1;
     var RegisterComponent;
     return {
         setters:[
@@ -23,18 +23,22 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../../h
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (auth_service_1_1) {
+                auth_service_1 = auth_service_1_1;
+            },
             function (helpers_1_1) {
                 helpers_1 = helpers_1_1;
             }],
         execute: function() {
             RegisterComponent = (function () {
-                function RegisterComponent(builder) {
+                function RegisterComponent(builder, authService) {
                     this.builder = builder;
+                    this.authService = authService;
                     this.name = new common_1.Control('', common_1.Validators.required);
                     this.username = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(2)]));
                     this.email = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, helpers_1.emailValidator]));
                     this.password = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(6)]));
-                    this.confirm = new common_1.Control('', common_1.Validators.required);
+                    this.confirm = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(6)]));
                     this.form = builder.group({
                         name: this.name,
                         username: this.username,
@@ -44,7 +48,8 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../../h
                     });
                 }
                 RegisterComponent.prototype.register = function () {
-                    console.log(this.form);
+                    this.authService.createUser(this.form.value)
+                        .subscribe(function (res) { console.log('Success', res); }, function (err) { return console.log('Error', err); });
                 };
                 RegisterComponent = __decorate([
                     core_1.Component({
@@ -56,7 +61,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../../h
                             common_1.FORM_DIRECTIVES
                         ]
                     }), 
-                    __metadata('design:paramtypes', [common_1.FormBuilder])
+                    __metadata('design:paramtypes', [common_1.FormBuilder, auth_service_1.AuthService])
                 ], RegisterComponent);
                 return RegisterComponent;
             }());

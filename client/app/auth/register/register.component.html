@@ -37,7 +37,7 @@
                         <input type="password" ngControl="confirm" placeholder="Confirm Password">
                     </div>
                 </div>
-                <button type="submit" class="ui fluid large teal submit button">Create Account</button>
+                <button type="submit" [disabled]="!form.valid" class="ui fluid large teal submit button">Create Account</button>
                 <div class="ui message">
                      Already have an account? <a [routerLink]="['Login']">Sign In</a>
                 </div>
