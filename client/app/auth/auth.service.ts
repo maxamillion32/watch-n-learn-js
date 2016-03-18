@@ -27,8 +27,8 @@ export class AuthService {
             .catch(this.handleError);                    
     }
     
-    login(email: string, password: string) {
-        let body = JSON.stringify({email, password});
+    login(user) {
+        let body = JSON.stringify(user);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
         
