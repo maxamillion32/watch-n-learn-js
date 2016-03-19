@@ -43,6 +43,7 @@ export class RegisterComponent {
     }
     
     register() {
+        delete this.form.value.confirm;
         this.authService.createUser(this.form.value)
                         .subscribe(
                             (res) => {
