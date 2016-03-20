@@ -9,7 +9,7 @@ import {emailValidator} from '../../helpers';
 @Component({
     selector: 'register',
     templateUrl: './app/auth/register/register.component.html',
-    styleUrls:['./app/auth/register/register.component.css'],
+    styleUrls: ['./app/auth/register/register.component.css'],
     directives: [
         ROUTER_DIRECTIVES,
         FORM_DIRECTIVES
@@ -22,17 +22,17 @@ export class RegisterComponent {
     email: Control;
     password: Control;
     confirm: Control;
-    
-    
+
+
     form: ControlGroup;
-    
+
     constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) {
         this.name = new Control('', Validators.required);
         this.username = new Control('', Validators.compose([Validators.required, Validators.minLength(2)]));
         this.email = new Control('', Validators.compose([Validators.required, emailValidator]));
         this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
         this.confirm = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
-        
+
         this.form = builder.group({
             name: this.name,
             username: this.username,
@@ -41,15 +41,16 @@ export class RegisterComponent {
             confirm: this.confirm
         });
     }
-    
+
     register() {
         delete this.form.value.confirm;
-        this.authService.createUser(this.form.value)
-                        .subscribe(
-                            (res) => {
-                                this.router.navigate(['Login']);
-                            },
-                            (err) => console.log('Error', err)
-                        ); 
+        this.authService
+            .createUser(this.form.value)
+            .subscribe(
+                (res) => {
+                    this.router.navigate(['Login']);
+                },
+                (err) => console.log('Error', err)
+            );
     }
 }
