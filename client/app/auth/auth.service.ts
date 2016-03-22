@@ -33,7 +33,7 @@ export class AuthService {
         let options = new RequestOptions({headers: headers});
         
         return this._http
-                .post('/api/auth', body, options)
+                .post('/login', body, options)
                 .map(res => {
                     if (res.json().token) {
                         localStorage.setItem('wnljwt', res.json().token);
