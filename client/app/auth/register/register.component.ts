@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router'
 
 import {AuthService} from '../auth.service'
 
-import {emailValidator} from '../../helpers';
+import {EmailValidators} from '../../helpers/validators/email-validator'
 
 @Component({
     selector: 'register',
@@ -29,7 +29,7 @@ export class RegisterComponent {
     constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) {
         this.name = new Control('', Validators.required);
         this.username = new Control('', Validators.compose([Validators.required, Validators.minLength(2)]));
-        this.email = new Control('', Validators.compose([Validators.required, emailValidator]));
+        this.email = new Control('', Validators.compose([Validators.required, EmailValidators.validEmail]));
         this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
         this.confirm = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
 

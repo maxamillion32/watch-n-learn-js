@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router'
 
 import {AuthService} from '../auth.service'
 
-import {emailValidator} from '../../helpers'
+import {EmailValidators} from '../../helpers/validators/email-validator'
 
 @Component({
     selector: 'login',
@@ -23,7 +23,7 @@ export class LoginComponent {
     form: ControlGroup;
     
     constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) {
-        this.email = new Control('', Validators.compose([Validators.required, emailValidator]));
+        this.email = new Control('', Validators.compose([Validators.required, EmailValidators.validEmail]));
         this.password = new Control('', Validators.required);
         
         this.form = builder.group({
@@ -36,7 +36,8 @@ export class LoginComponent {
         this.authService.login(this.form.value)
                         .subscribe(
                             (res) => {
-                                this.router.navigate(['Dashboard']);
+                                console.log(res);
+                                //this.router.navigate(['Dashboard']);
                             },
                             (err) => console.log(err)
                         )
