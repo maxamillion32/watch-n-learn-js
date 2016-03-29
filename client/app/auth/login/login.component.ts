@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router'
 
 import {AuthService} from '../auth.service'
 
-import {EmailValidators} from '../../helpers/validators/email-validator'
+import {EmailValidators} from '../../shared/validators/email-validator'
 
 @Component({
     selector: 'login',
