@@ -2,7 +2,8 @@ import {Component} from 'angular2/core'
 
 @Component({
     selector: 'home',
-    template: '<h1>Home</h1>'
+    templateUrl: './app/home/home.compnent.html',
+    styleUrls: ['./app/home/home.component.css']
 })
 
-export class HomeComponent{}
+export class HomeComponent {}
