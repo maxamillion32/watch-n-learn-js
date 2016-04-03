@@ -2,6 +2,7 @@ import {Component} from 'angular2/core'
 
 @Component({
     selector: 'project',
-    template: '<h1>Project</h1>'
+    template: './app/project/project.component.html',
+    styleUrls: ['./app/project/project.component.css']
 })
 export class ProjectComponent{}
