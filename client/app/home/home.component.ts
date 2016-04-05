@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component, OnInit} from 'angular2/core'
 
 @Component({
     selector: 'home',
@@ -6,4 +6,6 @@ import {Component} from 'angular2/core'
     styleUrls: ['./app/home/home.component.css']
 })
 
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+
+}
