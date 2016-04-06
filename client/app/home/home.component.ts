@@ -7,5 +7,5 @@ import {Component, OnInit} from 'angular2/core'
 })
 
 export class HomeComponent implements OnInit {
-
+  ngOnInit() {}
 }
