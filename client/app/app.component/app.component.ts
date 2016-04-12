@@ -1,26 +1,26 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
-import {HTTP_PROVIDERS} from 'angular2/http'
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 
-import {AuthService} from '../auth/auth.service'
+import {UserService} from '../auth/user.service';
 
-import {HomeComponent} from '../home/home.component'
-import {RegisterComponent} from '../auth/register/register.component'
-import {LoginComponent} from '../auth/login/login.component'
+import {HomeComponent} from '../home/home.component';
+import {RegisterComponent} from '../auth/register/register.component';
+import {LoginComponent} from '../auth/login/login.component';
 
 
 @Component({
   selector: 'app',
   templateUrl: './app/app.component/app.component.html',
-  styleUrls:['./app/app.component/app.component.css'],
-  directives:[
+  styleUrls: ['./app/app.component/app.component.css'],
+  directives: [
       ROUTER_DIRECTIVES
   ],
   providers: [
       ROUTER_PROVIDERS,
       HTTP_PROVIDERS,
-      AuthService
+      UserService
   ]
 })
 
@@ -29,7 +29,7 @@ import {LoginComponent} from '../auth/login/login.component'
       path: '/',
       name: 'Home',
       useAsDefault: true,
-      component: HomeComponent  
+      component: HomeComponent
     },
     {
         path: '/register',
