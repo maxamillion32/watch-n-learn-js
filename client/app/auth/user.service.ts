@@ -54,6 +54,10 @@ export class UserService {
       this.loggedIn = false;
     }
 
+    isLoggedIn() {
+      return this.isLoggedIn;
+    }
+
     private handleError(error: Response) {
         console.log(error);
         return Observable.throw(error.json().error || 'Server error');
