@@ -3,7 +3,7 @@ import {Headers, Http, Response, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class AuthService {
+export class UserService {
     constructor(private _http: Http) {}
 
     AuthUser() {

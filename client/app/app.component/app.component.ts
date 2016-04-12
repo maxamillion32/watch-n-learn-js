@@ -3,7 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 
-import {AuthService} from '../auth/auth.service';
+import {UserService} from '../auth/user.service';
 
 import {HomeComponent} from '../home/home.component';
 import {RegisterComponent} from '../auth/register/register.component';
@@ -20,7 +20,7 @@ import {LoginComponent} from '../auth/login/login.component';
   providers: [
       ROUTER_PROVIDERS,
       HTTP_PROVIDERS,
-      AuthService
+      UserService
   ]
 })
 

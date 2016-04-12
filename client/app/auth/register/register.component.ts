@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 
-import {AuthService} from '../auth.service';
+import { UserService } from '../user.service';
 
 import {EmailValidators} from '../../shared/validators/email-validator';
 
@@ -26,7 +26,7 @@ export class RegisterComponent {
 
     form: ControlGroup;
 
-    constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) {
+    constructor(private builder: FormBuilder, private userService: UserService, private router: Router) {
         this.name = new Control('', Validators.required);
         this.username = new Control('', Validators.compose([Validators.required, Validators.minLength(2)]));
         this.email = new Control('', Validators.compose([Validators.required, EmailValidators.validEmail]));
@@ -44,7 +44,7 @@ export class RegisterComponent {
 
     register() {
         delete this.form.value.confirm;
-        this.authService
+        this.userService
             .createUser(this.form.value)
             .subscribe(
                 (res) => {
