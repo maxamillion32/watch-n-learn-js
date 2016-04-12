@@ -4,7 +4,11 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
-    constructor(private _http: Http) {}
+    private loggedIn = false;
+
+    constructor(private _http: Http) {
+      this.loggedIn = !!localStorage.getItem('auth_token');
+    }
 
     AuthUser() {
         if (localStorage.getItem('wnljwt')) {
@@ -35,8 +39,10 @@ export class UserService {
                 .post('/login', body, options)
                 .map(res => {
                     if (res.json().token) {
-                        localStorage.setItem('wnljwt', res.json().token);
+                        localStorage.setItem('auth_token', res.json().token);
+                        this.loggedIn = true;
                     }
+
                     return res.json();
                 })
                 .do(res => console.log(res)) // comment out in production
