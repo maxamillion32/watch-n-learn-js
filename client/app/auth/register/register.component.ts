@@ -1,10 +1,10 @@
-import {Component} from 'angular2/core'
+import {Component} from 'angular2/core';
 import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router'
+import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 
-import {AuthService} from '../auth.service'
+import {AuthService} from '../auth.service';
 
-import {EmailValidators} from '../../shared/validators/email-validator'
+import {EmailValidators} from '../../shared/validators/email-validator';
 
 @Component({
     selector: 'register',
