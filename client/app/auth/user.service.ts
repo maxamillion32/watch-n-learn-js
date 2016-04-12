@@ -38,14 +38,14 @@ export class UserService {
         return this._http
                 .post('/login', body, options)
                 .map(res => {
-                    if (res.json().token) {
-                        localStorage.setItem('auth_token', res.json().token);
+                    if (res.json().id) {
+                        localStorage.setItem('auth_token', JSON.stringify(res.json()));
                         this.loggedIn = true;
                     }
 
                     return res.json();
                 })
-                .do(res => console.log(res)) // comment out in production
+                .do(res => console.log('login response', res)) // comment out in production
                 .catch(this.handleError);
     }
 
