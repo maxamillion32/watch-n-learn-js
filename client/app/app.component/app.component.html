@@ -3,13 +3,17 @@
         <a href="#" class="header item">
             Watch n Learn
         </a>
-        
-        <div class="ui secondary right menu">
+
+        <div class="ui secondary right menu" *ngIf="_userService.isLoggedIn()">
             <a [routerLink]="['Login']" class="item">Login</a>
             <a [routerLink]="['Register']" class="item">Register</a>
         </div>
+
+        <div class="ui secondary right menu" *ngIf="!_userService.isLoggedIn()">
+            <a [routerLink]="['Register']" class="item">{{ _userService.user.name }}</a>
+        </div>
     </div>
-    
+
 </div>
 
 <div>
