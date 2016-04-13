@@ -10,7 +10,17 @@ module.exports = function(app) {
            return;
        }
 
-       res.send(token);
+       app.models.user.findOne({id: token.user_id}, function(error, user) {
+         if (!error) {
+           delete user.password;
+           var response = {
+              token: token,
+              user: user,
+            };
+
+          res.send(response);
+         }
+       });
     });
   });
   app.use(router);
