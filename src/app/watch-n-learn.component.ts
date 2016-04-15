@@ -23,12 +23,14 @@ export class WatchNLearnAppComponent {
   constructor(private af: AngularFire) {
     af.auth.subscribe(
       auth => {
-        this.user = new User;
-        this.user.id = auth.github.id;
-        this.user.name = auth.github.displayName;
-        this.user.email = auth.github.email;
-        this.user.avatar = auth.github.profileImageURL;
-        this.user.username = auth.github.username;
+        if (auth.github) {
+          this.user = new User;
+          this.user.id = auth.github.id;
+          this.user.name = auth.github.displayName;
+          this.user.email = auth.github.email;
+          this.user.avatar = auth.github.profileImageURL;
+          this.user.username = auth.github.username;
+        }
       }
     );
   }
