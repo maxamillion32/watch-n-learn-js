@@ -1,6 +1,6 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import {HTTP_PROVIDERS} from '@angular/http';
+import { HTTP_PROVIDERS } from '@angular/http';
 
 import { 
   FIREBASE_PROVIDERS,
@@ -24,6 +24,6 @@ bootstrap(WatchNLearnAppComponent, [
   defaultFirebase('https://watch-n-learn.firebaseio.com/'),
   firebaseAuthConfig({
     provider: AuthProviders.Github,
-    method: AuthMethods.Redirect
+    method: AuthMethods.Popup
   })
 ]);
