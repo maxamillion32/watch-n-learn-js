@@ -27,11 +27,11 @@ export class RegisterComponent {
     form: ControlGroup;
 
     constructor(private builder: FormBuilder, private userService: UserService, private router: Router) {
-        this.name = new Control('', Validators.required);
-        this.username = new Control('', Validators.compose([Validators.required, Validators.minLength(2)]));
-        this.email = new Control('', Validators.compose([Validators.required, EmailValidators.validEmail]));
-        this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
-        this.confirm = new Control('', Validators.compose([Validators.required, Validators.minLength(6)]));
+        this.name = new Control('Christopher Ganga', Validators.required);
+        this.username = new Control('gangachris', Validators.compose([Validators.required, Validators.minLength(2)]));
+        this.email = new Control('ganga.chris@gmail.com', Validators.compose([Validators.required, EmailValidators.validEmail]));
+        this.password = new Control('dayocode', Validators.compose([Validators.required, Validators.minLength(6)]));
+        this.confirm = new Control('dayocode', Validators.compose([Validators.required, Validators.minLength(6)]));
 
         this.form = builder.group({
             name: this.name,
