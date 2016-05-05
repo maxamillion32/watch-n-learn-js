@@ -23,8 +23,8 @@ export class LoginComponent {
     form: ControlGroup;
 
     constructor(private builder: FormBuilder, private userService: UserService, private router: Router) {
-        this.email = new Control('', Validators.compose([Validators.required, EmailValidators.validEmail]));
-        this.password = new Control('', Validators.required);
+        this.email = new Control('ganga.chris@gmail.com', Validators.compose([Validators.required, EmailValidators.validEmail]));
+        this.password = new Control('dayocode', Validators.required);
 
         this.form = builder.group({
             email: this.email,

@@ -2,9 +2,12 @@ import {Injectable} from 'angular2/core';
 import {Headers, Http, Response, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 
+import {User} from '../shared/models/user';
+
 @Injectable()
 export class UserService {
     private loggedIn = false;
+    private user: User;
 
     constructor(private _http: Http) {
       this.loggedIn = !!localStorage.getItem('auth_token');
@@ -38,11 +41,12 @@ export class UserService {
         return this._http
                 .post('/login', body, options)
                 .map(res => {
-                    if (res.json().id) {
+                  console.log('resss', res.json());
+                    if (res.json().token) {
+                        console.log('here');
                         localStorage.setItem('auth_token', JSON.stringify(res.json()));
                         this.loggedIn = true;
                     }
-
                     return res.json();
                 })
                 .do(res => console.log('login response', res)) // comment out in production
@@ -56,6 +60,17 @@ export class UserService {
 
     isLoggedIn() {
       return this.isLoggedIn;
+    }
+
+    getUser() {
+      if (this.isLoggedIn) {
+        let auth_token = localStorage.getItem('auth_token');
+        let user = JSON.parse(auth_token).user;
+
+        return user;
+      } else {
+        return null;
+      }
     }
 
     private handleError(error: Response) {
