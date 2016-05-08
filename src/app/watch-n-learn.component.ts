@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 
+// Angular Material
+import { MdToolbar } from '@angular2-material/toolbar';
+import { MdIcon } from '@angular2-material/icon';
 @Component({
   moduleId: module.id,
   selector: 'watch-n-learn-app',
   templateUrl: 'watch-n-learn.component.html',
-  styleUrls: ['watch-n-learn.component.css']
+  styleUrls: ['watch-n-learn.component.css'],
+  directives: [ MdToolbar, MdIcon ]
 })
 export class WatchNLearnAppComponent {
-  title = 'watch-n-learn works!';
+  title = 'Watch n Learn';
 }

@@ -4,7 +4,8 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'firebase': 'vendor/firebase/lib/firebase-web.js',
-  'angularfire2': 'vendor/angularfire2'
+  'angularfire2': 'vendor/angularfire2',
+  '@angular2-material': 'vendor/@angular2-material'
 };
 
 /** User packages configuration. */
@@ -12,6 +13,26 @@ const packages: any = {
    angularfire2: {
     defaultExtension: 'js',
     main: 'angularfire2.js'
+  },
+  '@angular2-material/core': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'core.js'
+   },
+  '@angular2-material/toolbar': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'toolbar.js'
+  },
+  '@angular2-material/icon': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'icon.js'
+  },
+  '@angular2-material/button': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'button.js'
   }
 };
 
