@@ -1,0 +1,19 @@
+<md-toolbar color="primary">
+  <span>{{title}}</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="wl-toolbar"></span>
+
+
+  <button md-fab color="primary" (click)="login()" *ngIf="!user">
+   <md-icon class="md-24">account_circle</md-icon>
+  </button>
+
+  <button md-icon-button color="primary" class="avatar-btn" (click)="login()" *ngIf="user">
+   <md-icon><img [src]="user.avatar" width="100%"/></md-icon>
+  </button>
+
+  <button md-fab color="primary" *ngIf="user">
+    <md-icon class="md-24">exit_to_app</md-icon>
+  </button>
+</md-toolbar>
