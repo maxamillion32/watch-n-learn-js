@@ -33,6 +33,14 @@ const packages: any = {
     format: 'cjs',
     defaultExtension: 'js',
     main: 'button.js'
+  },
+  '@angular2-material/card': {
+    defaultExtension: 'js',
+    main: 'card.js'
+  },
+  '@angular2-material/list': {
+    defaultExtension: 'js',
+    main: 'list.js'
   }
 };
 
@@ -49,9 +57,13 @@ const barrels: string[] = [
   '@angular/router',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
+  '@angular/router-deprecated',
 
   // Thirdparty barrels.
   'rxjs',
+  'bootstrap',
+  'font-awesome',
+  'jquery',
 
   // App specific barrels.
   'app',
@@ -72,6 +84,9 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
+    'bootstrap': 'vendor/bootstrap',
+    'font-awesome': 'vendor/font-awesome',
+    'jquery': 'vendor/jquery',
     'main': 'main.js'
   },
   packages: cliSystemConfigPackages
